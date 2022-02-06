@@ -1,0 +1,22 @@
+{
+  "name": "team_portfolio_generator",
+  "version": "1.0.0",
+  "description": "A command line application that generates a HTML page that displays employee information",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnnh/Team_Portfolio_Generator.git"
+  },
+  "author": "J Horvath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnnh/Team_Portfolio_Generator/issues"
+  },
+  "homepage": "https://github.com/jnnh/Team_Portfolio_Generator#readme",
+  "devDependencies": {
+    "jest": "^27.5.0"
+  }
+}
