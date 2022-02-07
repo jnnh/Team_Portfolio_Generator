@@ -6,6 +6,7 @@ test('creates an Employee object', ()=>{
     expect(employee.name).toBe('Jane');
     expect(employee.id).toBe(123);
     expect(employee.email).toBe('jane@gmail.com');
+    expect(employee.role).toBe('Employee');
 });
 test('gets employee name', ()=>{
     const employee = new Employee('Jane', 123, 'jane@gmail.com');
