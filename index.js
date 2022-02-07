@@ -163,7 +163,7 @@ const addEmployee = employeeList => {
 
 startApp()
     .then(addEmployee)
-    // .then(employeeList =>{
-    //     return generatePage(employeeList);
-    // })
+    .then(employeeList =>{
+        return generatePage(employeeList);
+    })
 
