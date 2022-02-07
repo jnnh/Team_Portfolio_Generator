@@ -3,6 +3,7 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template.js');
+const writeFile = require('./utils/generate-site');
 
 const createEngineer = employeeList => {
     inquirer.prompt([
@@ -42,7 +43,6 @@ const createEngineer = employeeList => {
             console.log(employeeList);
             return employeeList;
         })
-        .then(addEmployee);
 }
 const createIntern = employeeList => {
     inquirer.prompt([
@@ -82,7 +82,6 @@ const createIntern = employeeList => {
             console.log(employeeList);
             return employeeList;
         })
-        .then(addEmployee);
 }
 
 const startApp = () => {
@@ -150,20 +149,34 @@ const addEmployee = employeeList => {
     ])
         .then(employeeData => {
             if (employeeData.roles === 'Engineer') {
-                createEngineer(employeeList);
+                return createEngineer(employeeList);
             }
             else if (employeeData.roles === 'Intern') {
-                createIntern(employeeList);
+                return createIntern(employeeList);
             }
             else {
-                return employeeData;
+                return employeeList;
+            }
+        })
+        .then(updatedList => {
+            if (!updatedList.length === employeeList.length) {
+                addEmployee(updatedList);
+            }
+            else {
+                return updatedList;
             }
         });
 };
 
 startApp()
     .then(addEmployee)
-    .then(employeeList =>{
-        return generatePage(employeeList);
-    })
+    .then(allEmployees => {
+        console.log(allEmployees);
+    });
+    //     return generatePage(employeeList);
+    // })
+    // .then(pageHTML=> {
+    //     console.log(pageHTML);
+    //     return writeFile(pageHTML);
+    // })
 
