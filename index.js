@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
-// const Engineer = require('./Engineer');
-// const Intern = require('./Intern');
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 const createEngineer = () => {
@@ -41,7 +42,13 @@ const startApp = () =>{
                 name: 'office',
                 message: "What is the Manager's office number?"
             }
-        ])}
+        ])
+        .then(({name,id,email,office})=>{
+            const manager = new Manager (name, id, email, office);
+            console.log(manager);
+            return manager;
+        });
+}
 const addEmployee= managerData => {
         if (!managerData.employees){
             managerData.employees = [];
@@ -82,4 +89,5 @@ const addEmployee= managerData => {
 };
 
 startApp()
-    .then(addEmployee);
+
+// console.log(manager);
